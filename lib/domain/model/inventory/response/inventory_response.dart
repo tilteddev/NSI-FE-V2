@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nsf_v2/application/annotations/field_to_ui/field_to_ui_data.dart';
 import 'package:nsf_v2/domain/model/inventory/response/specific_sell_price.dart';
 
 import 'image_data.dart';
@@ -25,6 +26,8 @@ class InventoryResponse with _$InventoryResponse {
     List<SpecificSellPrice>? specificSellPrices
   }) = _InventoryResponse;
   factory InventoryResponse.fromJson(Map<String, Object?> json) => _$InventoryResponseFromJson(json);
+
+  
 }
 
 

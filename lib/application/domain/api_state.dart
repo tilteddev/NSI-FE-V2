@@ -1,5 +1,3 @@
-import 'dart:io';
-
 class ApiState<T> {
   T? data;
   String? error;

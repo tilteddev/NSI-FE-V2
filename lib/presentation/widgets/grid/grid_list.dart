@@ -3,14 +3,16 @@ import 'package:nsf_v2/application/extensions/context_extension.dart';
 
 class FlexibleGridList extends StatelessWidget {
   final List<Widget> gridItems;
+  final double parentHorizontalPadding;
   final double horizontalPadding;
 
-  const FlexibleGridList({super.key, required this.gridItems, required this.horizontalPadding});
+  const FlexibleGridList({super.key, required this.parentHorizontalPadding, required this.gridItems, required this.horizontalPadding});
   
   @override
   Widget build(BuildContext context) {
     int itemsPerRow = context.isMobile ? 2 : 3;
-    double containerWidth = context.screenWidth / itemsPerRow;
+    double screenWidthAfterParentPadding = context.screenWidth - 20;
+    double containerWidth = (screenWidthAfterParentPadding / itemsPerRow);
 
     return ListView.separated(
       shrinkWrap: true,
@@ -26,7 +28,7 @@ class FlexibleGridList extends StatelessWidget {
           rowChildren.add(
             Container(
               width: containerWidth,
-              padding: getPadding(startingIndex, endingIndex, i),
+              padding: i < endingIndex-1 ? EdgeInsets.only(right: horizontalPadding) : EdgeInsets.zero,
               child: gridItems[i]
             )
           );
@@ -39,13 +41,5 @@ class FlexibleGridList extends StatelessWidget {
         return const SizedBox(height: 10);
       },
     );
-  }
-  
-  EdgeInsetsGeometry getPadding(int startIndex, int endIndex, int currentIndex) {
-    if(currentIndex == startIndex) {
-      return EdgeInsets.symmetric(horizontal: horizontalPadding);
-    } 
-
-    return EdgeInsets.only(right: horizontalPadding);
   }
 }

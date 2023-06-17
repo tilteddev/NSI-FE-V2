@@ -11,8 +11,9 @@ class InventoryScreenWeb extends StackedView<InventoryScreenViewModel> {
   Widget builder(BuildContext context, InventoryScreenViewModel viewModel, Widget? child) {
     return Scaffold(
       body: Container(
-        // padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: FlexibleGridList(
+          parentHorizontalPadding: 0,
           horizontalPadding: 10,
           gridItems: viewModel.inventoryData.map((e) => InventoryItemWidget(inventoryItem: e),).toList()
         )
