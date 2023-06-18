@@ -6,15 +6,15 @@ part of 'authenticate_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AuthenticateResponse _$$_AuthenticateResponseFromJson(
+AuthenticateResponse _$AuthenticateResponseFromJson(
         Map<String, dynamic> json) =>
-    _$_AuthenticateResponse(
-      accessToken: json['accessToken'] as String,
-      refreshToken: json['refreshToken'] as String,
+    AuthenticateResponse(
+      accessToken: json['accessToken'] as String?,
+      refreshToken: json['refreshToken'] as String?,
     );
 
-Map<String, dynamic> _$$_AuthenticateResponseToJson(
-        _$_AuthenticateResponse instance) =>
+Map<String, dynamic> _$AuthenticateResponseToJson(
+        AuthenticateResponse instance) =>
     <String, dynamic>{
       'accessToken': instance.accessToken,
       'refreshToken': instance.refreshToken,

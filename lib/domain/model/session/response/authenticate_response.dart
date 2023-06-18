@@ -1,10 +1,15 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'authenticate_response.freezed.dart';
+import 'package:json_annotation/json_annotation.dart';
+
 part 'authenticate_response.g.dart';
 
-@freezed
-class AuthenticateResponse with _$AuthenticateResponse {
-  const factory AuthenticateResponse({required String accessToken, required String refreshToken}) = _AuthenticateResponse;
-  factory AuthenticateResponse.fromJson(Map<String, Object?> json) => _$AuthenticateResponseFromJson(json);
+@JsonSerializable()
+class AuthenticateResponse {
+  final String? accessToken;
+  final String? refreshToken;
+
+  AuthenticateResponse({this.accessToken, this.refreshToken});
+
+  factory AuthenticateResponse.fromJson(Map<String, dynamic> json) => _$AuthenticateResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthenticateResponseToJson(this);
 }

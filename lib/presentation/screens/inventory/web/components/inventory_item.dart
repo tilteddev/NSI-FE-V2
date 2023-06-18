@@ -26,7 +26,7 @@ class InventoryItemWidgetState extends State<InventoryItemWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.inventoryItem.itemName, 
+            widget.inventoryItem.itemName!, 
             style: GoogleFonts.sourceSansPro(
               fontWeight: FontWeight.bold,
               fontSize: 16
@@ -44,7 +44,7 @@ class InventoryItemWidgetState extends State<InventoryItemWidget> {
                 )
               ),
               Text(
-                widget.inventoryItem.itemCode, 
+                widget.inventoryItem.itemCode!, 
                 style: GoogleFonts.sourceSansPro(
                   fontSize: 14
                 )

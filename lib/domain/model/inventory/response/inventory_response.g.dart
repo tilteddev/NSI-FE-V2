@@ -6,30 +6,29 @@ part of 'inventory_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_InventoryResponse _$$_InventoryResponseFromJson(Map<String, dynamic> json) =>
-    _$_InventoryResponse(
-      itemCode: json['itemCode'] as String,
-      itemName: json['itemName'] as String,
-      usage: json['usage'] as String?,
-      pair: json['pair'] as String?,
-      buyprice: json['buyprice'] as String?,
-      buyPriceType: json['buyPriceType'] as String?,
+InventoryResponse _$InventoryResponseFromJson(Map<String, dynamic> json) =>
+    InventoryResponse(
       buyPriceDate: json['buyPriceDate'] as String?,
-      sellPrice: json['sellPrice'] as String?,
-      sellBulkPrice: json['sellBulkPrice'] as String?,
-      supplier: json['supplier'] as String?,
-      imageFilename: json['imageFilename'] as String?,
+      buyPriceType: json['buyPriceType'] as String?,
+      buyprice: json['buyprice'] as String?,
+      id: json['_id'] as String?,
       image: json['image'] == null
           ? null
           : ImageData.fromJson(json['image'] as Map<String, dynamic>),
-      id: json['_id'] as String,
+      imageFilename: json['imageFilename'] as String?,
+      itemCode: json['itemCode'] as String?,
+      itemName: json['itemName'] as String?,
+      pair: json['pair'] as String?,
+      sellBulkPrice: json['sellBulkPrice'] as String?,
+      sellPrice: json['sellPrice'] as String?,
       specificSellPrices: (json['specificSellPrices'] as List<dynamic>?)
           ?.map((e) => SpecificSellPrice.fromJson(e as Map<String, dynamic>))
           .toList(),
+      supplier: json['supplier'] as String?,
+      usage: json['usage'] as String?,
     );
 
-Map<String, dynamic> _$$_InventoryResponseToJson(
-        _$_InventoryResponse instance) =>
+Map<String, dynamic> _$InventoryResponseToJson(InventoryResponse instance) =>
     <String, dynamic>{
       'itemCode': instance.itemCode,
       'itemName': instance.itemName,
@@ -46,4 +45,28 @@ Map<String, dynamic> _$$_InventoryResponseToJson(
       '_id': instance.id,
       'specificSellPrices':
           instance.specificSellPrices?.map((e) => e.toJson()).toList(),
+    };
+
+ImageData _$ImageDataFromJson(Map<String, dynamic> json) => ImageData(
+      contentType: json['contentType'] as String?,
+      data: json['data'],
+    );
+
+Map<String, dynamic> _$ImageDataToJson(ImageData instance) => <String, dynamic>{
+      'contentType': instance.contentType,
+      'data': instance.data,
+    };
+
+SpecificSellPrice _$SpecificSellPriceFromJson(Map<String, dynamic> json) =>
+    SpecificSellPrice(
+      buyerName: json['buyerName'] as String?,
+      sellBulkPrice: json['sellBulkPrice'] as String?,
+      sellPrice: json['sellPrice'] as String?,
+    );
+
+Map<String, dynamic> _$SpecificSellPriceToJson(SpecificSellPrice instance) =>
+    <String, dynamic>{
+      'buyerName': instance.buyerName,
+      'sellPrice': instance.sellPrice,
+      'sellBulkPrice': instance.sellBulkPrice,
     };
