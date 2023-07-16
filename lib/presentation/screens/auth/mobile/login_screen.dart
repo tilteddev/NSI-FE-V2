@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nsf_v2/application/data/themes/app_color.dart';
+import 'package:nsf_v2/application/data/themes/app_themes.dart';
 import 'package:nsf_v2/application/extensions/context_extension.dart';
 import 'package:nsf_v2/presentation/screens/auth/login_screen_view_model.dart';
 import 'package:nsf_v2/presentation/widgets/hoverable/mouse_hoverable_widget.dart';
@@ -17,19 +18,30 @@ class LoginScreenMobile extends StackedView<LoginScreenViewModel> {
       backgroundColor: AppColor.lightGrey,
       body: Center(
         child: SizedBox(
-          width: context.screenWidth / 2,
+          width: context.screenWidth * 0.8,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image.asset(
-                  'assets/nia-blue-trans.png', 
-                  height: (context.screenWidth / 2) * 0.6, 
-                  width: (context.screenWidth / 2) * 0.6
+              Container(
+                height: 150,
+                width: 150,
+                clipBehavior: Clip.antiAlias,
+                padding: EdgeInsets.all(AppSpacing.s2),
+                decoration: ShapeDecoration(
+                  color: AppColor.primaryBlack,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+                  shadows: const [
+                    BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 4,
+                      offset: Offset(0, 2),
+                      spreadRadius: 0,
+                    )
+                  ],
                 ),
+                child: SvgPicture.asset('assets/svg/logo.svg')
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: AppSpacing.s16),
               MouseHoverableWidget(
                 transformEffect: Matrix4.identity()..translate(0, -5, 0),
                 builder: (isHovered) {
@@ -64,7 +76,7 @@ class LoginScreenMobile extends StackedView<LoginScreenViewModel> {
                   padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
-                    color: AppColor.blue
+                    color: AppColor.primaryBlue
                   ),
                   child: Text(
                     'Login', 

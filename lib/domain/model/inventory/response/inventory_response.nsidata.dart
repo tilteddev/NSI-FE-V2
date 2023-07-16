@@ -13,7 +13,7 @@ extension ExtensionInventoryResponse on InventoryResponse {
         "Nama Barang": Property<String?>(itemName),
         "Pemakaian": Property<String?>(usage),
         "Satuan": Property<String?>(pair),
-        "Harga Modal": Property<String?>(buyprice),
+        "Harga Modal": Property<String?>(buyPrice),
         "Jenis Modal": Property<String?>(buyPriceType),
         "Tanggal Modal": Property<String?>(buyPriceDate),
         "Harga Jual Ecer": Property<String?>(sellPrice),

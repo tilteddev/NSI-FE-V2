@@ -18,6 +18,6 @@ extension BuildContextExtras on BuildContext {
 }
 
 class FormFactor {
-  static double maxMobileWidth = 599;
-  static double maxTabletWidth = 960;
+  static double maxMobileWidth = 1023;
+  static double maxTabletWidth = 1280;
 }

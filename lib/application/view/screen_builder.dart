@@ -5,15 +5,23 @@ import 'package:nsf_v2/application/extensions/context_extension.dart';
 class ScreenBuilder {
   final Widget mobileScreenWidget;
   final Widget desktopScreenWidget;
+  final Widget tabletScreenWidget;
 
-  ScreenBuilder({required this.desktopScreenWidget, required this.mobileScreenWidget});
+  ScreenBuilder({required this.desktopScreenWidget, required this.mobileScreenWidget, required this.tabletScreenWidget});
 
   Widget buildScreen(BuildContext context) {
-    return context.screenWidth <= FormFactor.maxMobileWidth ? mobileScreenWidget : desktopScreenWidget;
+    if(context.screenWidth <= FormFactor.maxMobileWidth) {
+      return mobileScreenWidget;
+    } else if(context.screenWidth <= FormFactor.maxTabletWidth) {
+      return tabletScreenWidget;
+    }
+    
+    return desktopScreenWidget;
   }
   
   dynamic build(BuildContext context, GoRouterState state) {
-    if(context.screenWidth <= FormFactor.maxMobileWidth) {
+
+    if(context.screenWidth > FormFactor.maxMobileWidth) {
       return CustomTransitionPage<void>(
         key: state.pageKey,
         child: desktopScreenWidget,

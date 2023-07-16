@@ -4,14 +4,14 @@ targets:
       json_serializable:
         options:
           explicit_to_json: true
-      nsf_v2|field_to_ui:
+      nsf_v2|nsi_data:
         enabled: true
 
 builders:
-  field_to_ui:
-    import: "package:nsf_v2/application/builders/field_ui_builder.dart"
-    builder_factories: ["fieldToUIBuilder"]
-    build_extensions: {".dart": [".model.part"]}
+  nsi_data:
+    import: "package:nsf_v2/application/builders/nsi_data_builder.dart"
+    builder_factories: ["nsiDataBuilder"]
+    build_extensions: {".dart": [".nsidata.dart"]}
     auto_apply: dependents
     build_to: source
     applies_builders: ["source_gen|combining_builder"]

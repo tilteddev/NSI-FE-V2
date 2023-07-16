@@ -7,7 +7,7 @@ import 'package:nsf_v2/application/domain/base_repository.dart';
 
 @singleton
 class UserRepository extends BaseRepository<List<User>>{
-  final UserHttpService _userRestAPI;
+  final UserRestAPI _userRestAPI;
 
   UserRepository(@singleton this._userRestAPI);
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:nsf_v2/application/data/themes/app_color.dart';
+import 'package:nsf_v2/application/data/themes/app_themes.dart';
 
 class TextFieldWidget extends StatelessWidget {
   final void Function(String? value) onChanged;
@@ -8,6 +7,7 @@ class TextFieldWidget extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Color? borderColor;
+  final double maxWidth;
 
   final bool obscureText;
   const TextFieldWidget(
@@ -17,26 +17,34 @@ class TextFieldWidget extends StatelessWidget {
       this.borderColor,
       this.suffixIcon,
       required this.onChanged,
-      required this.label});
+      required this.label,
+      this.maxWidth = 500
+  });
   
   @override
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(
-        maxWidth: 500
+        maxWidth: maxWidth,
       ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: AppColor.neutralLightGrey,
+      decoration: ShapeDecoration(
+        color: AppColor.neutralWhite,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            width:1,
+            strokeAlign: BorderSide.strokeAlignOutside,
+            color: AppColor.fromHex('#D9DBE0'),
+          ),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        shadows: [
+          AppBoxShadow.shadow(blurRadius: 5)
+        ],
       ),
       child: TextField(
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: borderColor ?? AppColor.iosDarkGrey,
-              width: 0.5
-            ),
-            borderRadius: BorderRadius.circular(10),
+          border: const OutlineInputBorder(
+            borderSide: BorderSide.none
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           label: label,
@@ -44,6 +52,7 @@ class TextFieldWidget extends StatelessWidget {
           prefixIconColor: AppColor.iosDarkGrey,
           suffixIcon: suffixIcon,
           suffixIconColor: AppColor.iosGrey,
+          floatingLabelBehavior: FloatingLabelBehavior.never
         ),
         cursorColor: AppColor.blue,
         onChanged: onChanged,

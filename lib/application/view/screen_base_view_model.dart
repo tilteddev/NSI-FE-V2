@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:nsf_v2/application/di.dart';
+import 'package:nsf_v2/application/di/di.dart';
 import 'package:nsf_v2/application/service/external_services.dart';
 import 'package:stacked/stacked.dart';
 
 class ScreenBaseViewModel extends BaseViewModel {
-  final ExternalServices _externalServices = getIt.get<ExternalServices>();
 
   final BuildContext context;
 
   ScreenBaseViewModel(this.context);
   
-  String get accessToken => _externalServices.accessToken;
+  String get accessToken => ExternalServices.instance.accessToken;
 
   Future<void> setAccessToken(String accessToken) async {
-    _externalServices.setAccessToken(accessToken);
+    ExternalServices.instance.setAccessToken(accessToken);
   }
 
-  String get refreshToken => _externalServices.refreshToken;
+  String get refreshToken => ExternalServices.instance.refreshToken;
   
   void setRefreshToken(String refreshToken) {
-    _externalServices.setRefreshToken(refreshToken);
+    ExternalServices.instance.setRefreshToken(refreshToken);
   }
 }

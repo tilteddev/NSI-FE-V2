@@ -36,4 +36,29 @@ class AppColor {
   static Color iosGrey = fromHex('#212124');
   static Color iosLightGrey = fromHex('#818181');
   static Color iosBlue = fromHex("#007AFF");
+
+  // figma design system
+  static Color strokeLightGrey = Color(0xFFDFE1E5);
+
+  static Color primaryPurple = fromHex('#4B4FA6');
+  static Color primaryRed = fromHex('#CB3535');
+  static Color primaryOrange = fromHex('#FF9500');
+  static Color primaryLightBlue = fromHex('#69BDBF');
+  static Color primaryBlue = fromHex('#2765BD');
+  static Color primaryDarkerBlue = fromHex('#2F73D2');
+  static Color primaryBlack = fromHex('#13131A');
+  static Color primaryLighterBlack = fromHex('#4C4C50');
+  static Color primaryLightGrey = fromHex('#75767A');
+  static Color primaryGreen = fromHex('#067E41');
+  static Color primaryLabelGrey = const Color(0xFF75767A);
+
+}
+
+class AppBoxShadow {
+  static BoxShadow shadow({double dx = 0, double dy= 0, double blurRadius = 10}) => BoxShadow(
+    color: Color(0xBFDFE1E5),
+    blurRadius: blurRadius,
+    offset: Offset(dx, dy),
+    spreadRadius: 0,
+  );
 }

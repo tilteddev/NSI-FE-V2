@@ -1,11 +1,12 @@
-import 'package:injectable/injectable.dart';
+import 'package:nsf_v2/application/di/di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@singleton
 class ExternalServices {
-  late SharedPreferences _sharedPreferences;
+  static ExternalServices instance = ExternalServices._();
+  
+  SharedPreferences _sharedPreferences = getIt.get<SharedPreferences>();
 
-  ExternalServices() {
+  ExternalServices._() {
     loadExternalServices();
   }
 
@@ -25,5 +26,15 @@ class ExternalServices {
 
   void setRefreshToken(String rt) {
     _sharedPreferences.setString('rt', rt);
+  }
+
+  Future<void> clearKeys() async {
+    await _sharedPreferences.clear();
+  }
+
+  String get username => _sharedPreferences.getString('username') ?? '';
+
+  void setUsername(String username) {
+    _sharedPreferences.setString('username', username);
   }
 }

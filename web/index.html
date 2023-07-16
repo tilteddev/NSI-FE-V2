@@ -41,6 +41,11 @@
 </head>
 <body>
   <script>
+    function getQParams() {
+      return window.location.href;
+    }
+  </script>
+  <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({

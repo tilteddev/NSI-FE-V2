@@ -19,17 +19,10 @@ class _InventoryRestApi implements InventoryRestApi {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<List<InventoryResponse>>> getInventoryData(
-    dynamic accessToken,
-    dynamic refreshToken,
-  ) async {
+  Future<HttpResponse<List<InventoryResponse>>> getInventoryData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{
-      r'accessToken': accessToken,
-      r'refreshToken': refreshToken,
-    };
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<InventoryResponse>>>(Options(

@@ -10,7 +10,7 @@ InventoryResponse _$InventoryResponseFromJson(Map<String, dynamic> json) =>
     InventoryResponse(
       buyPriceDate: json['buyPriceDate'] as String?,
       buyPriceType: json['buyPriceType'] as String?,
-      buyprice: json['buyprice'] as String?,
+      buyPrice: json['buyPrice'] as String?,
       id: json['_id'] as String?,
       image: json['image'] == null
           ? null
@@ -34,7 +34,7 @@ Map<String, dynamic> _$InventoryResponseToJson(InventoryResponse instance) =>
       'itemName': instance.itemName,
       'usage': instance.usage,
       'pair': instance.pair,
-      'buyprice': instance.buyprice,
+      'buyPrice': instance.buyPrice,
       'buyPriceType': instance.buyPriceType,
       'buyPriceDate': instance.buyPriceDate,
       'sellPrice': instance.sellPrice,

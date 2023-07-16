@@ -1,31 +1,31 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:nsf_v2/application/di.dart';
-import 'package:nsf_v2/application/provider/sso_provider.dart';
+import 'package:nsf_v2/application/di/di.dart';
 import 'package:nsf_v2/application/routes.dart';
-import 'package:provider/provider.dart';
+import 'package:js/js.dart';
+import 'package:url_strategy/url_strategy.dart';
+
+@JS('getQParams')
+external String getQParams(); 
+late String locale;
 
 void main() async {
-
+  setPathUrlStrategy();
+  locale = Uri.parse(getQParams()).queryParameters['langCode'] ?? 'en';
   configureDependencies();
-  runApp(MyApp());
+  runApp(const MainApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
-  final SsoProvider ssoProvider = SsoProvider();
-
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider<SsoProvider>.value(
-    value: ssoProvider,
-    child: MaterialApp.router(
-      title: "Nusantara Inventory Analytics",
-      debugShowCheckedModeBanner: false,
-      routeInformationParser: router.routeInformationParser,
-      routeInformationProvider: router.routeInformationProvider,
-      routerDelegate: router.routerDelegate,
-    )
+  Widget build(BuildContext context) => MaterialApp.router(
+    onGenerateTitle: (context) => 'Nusantara Inventory Analytics',
+    debugShowCheckedModeBanner: false,
+    routeInformationParser: router.routeInformationParser,
+    routeInformationProvider: router.routeInformationProvider,
+    routerDelegate: router.routerDelegate,
+    locale: Locale(locale),
   ); 
+  
 }

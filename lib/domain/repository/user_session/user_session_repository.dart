@@ -10,7 +10,7 @@ import 'package:retrofit/dio.dart';
 
 @singleton
 class UserSessionRepository extends BaseRepository<AuthenticateResponse>{
-  final UserSessionHttpService _userSessionRestAPI;
+  final UserSessionRestAPI _userSessionRestAPI;
 
   UserSessionRepository(@singleton this._userSessionRestAPI);
 

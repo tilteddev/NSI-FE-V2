@@ -1,11 +1,8 @@
 
-import 'package:nsf_v2/application/di.dart';
 import 'package:nsf_v2/application/domain/api_state.dart';
-import 'package:nsf_v2/application/service/external_services.dart';
 import 'package:retrofit/dio.dart';
 
 class BaseRepository<T> {
-  final ExternalServices externalServices = getIt.get<ExternalServices>();
 
   List<int> successCodes = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
 

@@ -19,7 +19,7 @@ class InventoryResponse {
   final String? pair;
 
   @Data('Harga Modal')
-  final String? buyprice;
+  final String? buyPrice;
 
   @Data('Jenis Modal')
   final String? buyPriceType;
@@ -46,7 +46,7 @@ class InventoryResponse {
   InventoryResponse(
       {this.buyPriceDate,
       this.buyPriceType,
-      this.buyprice,
+      this.buyPrice,
       this.id,
       this.image,
       this.imageFilename,
