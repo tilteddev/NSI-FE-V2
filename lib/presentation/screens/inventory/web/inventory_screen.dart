@@ -47,7 +47,11 @@ class InventoryScreenWeb extends StackedView<InventoryScreenViewModel> {
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(AppSpacing.s16),
-            child: InventorySidebarWidget(viewModel: viewModel,)
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return InventorySidebarWidget(viewModel: viewModel, constraints: constraints);
+              },
+            )
           ),
         )
       ],
